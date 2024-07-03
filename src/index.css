@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.nav-bar {
+  width: 100%;
+  height: 50px;
+  background-color: brown;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  font-family: cursive;
+}
+.nav-bar div {
+  margin: 40px;
+}
+.nav-bar .logo {
+  color: aqua;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 800;
+}
