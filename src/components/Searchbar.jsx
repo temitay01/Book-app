@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Context } from "../pages/Books";
 
 function Searchbar() {
-  const { books, setBooks, duplicate } = useContext(Context);
+  const { setBooks, duplicate } = useContext(Context);
   const { handleChange, handleSearch } = useContext(Context);
 
   const handleRestore = () => {

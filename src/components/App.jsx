@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Books";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BookDetail from "../pages/BookDetail";
 import Shelves from "../pages/Shelves";
+import { getStoredBooks, storeBooks } from "../utils/booksMethods";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SecondContext = React.createContext();
 
 function App() {
   const [savedBooks, setSavedBooks] = useState([]);
-
-  const handleSave = (id) => {
-    if (!savedBooks.includes(id)) {
-      setSavedBooks([...savedBooks, id]);
-      alert("Added to shelf");
+  const notify = (message) => toast(message);
+  const handleSave = (book) => {
+    if (!savedBooks.some((item) => item.id === book.id)) {
+      setSavedBooks((prev) => {
+        storeBooks([...prev, book]);
+        return [...prev, book];
+      });
+      notify("Book successfully added!");
     } else {
-      alert("Book Already Added");
+      notify("Book already added!");
     }
   };
 
+  useEffect(() => {
+    const storedBooks = getStoredBooks();
+    setSavedBooks(storedBooks);
+  }, []);
   return (
     <BrowserRouter>
       <div
@@ -40,6 +50,7 @@ function App() {
         </SecondContext.Provider>
         <Footer />
       </div>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

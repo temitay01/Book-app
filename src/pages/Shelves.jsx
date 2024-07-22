@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { SecondContext } from "../components/App";
+import {  storeBooks } from "../utils/booksMethods";
+
+
 
 function Shelves() {
   const navigate = useNavigate();
@@ -12,7 +15,11 @@ function Shelves() {
   };
 
   const handleDelete = (id) => {
-    setSavedBooks(savedBooks.filter((book) => book.id !== id));
+    setSavedBooks((prev) => {
+      const filteredBooks = prev.filter((book) => book.id !== id);
+      storeBooks(filteredBooks);
+      return filteredBooks;
+    });
   };
 
   return (
