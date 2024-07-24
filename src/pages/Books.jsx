@@ -1,22 +1,28 @@
 import React, { useState, useEffect, createContext } from "react";
-
 import Searchbar from "../components/Searchbar";
 import Bookcards from "../components/Bookcards";
-export const Context = React.createContext();
 
-function Home({ handleClick }) {
+export const Context = createContext();
+
+function Books({ handleClick }) {
   const [books, setBooks] = useState([]);
   const [duplicate, setDuplicate] = useState([]);
   const [searchedItem, setSearchedItem] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const booksPerPage = 10;
+  const lastIndex = currentPage * booksPerPage;
+  const firstIndex = lastIndex - booksPerPage;
+  const [currentBooks, setCurrentBooks] = useState([]);
+
+  const pgNumber = Math.ceil(books.length / booksPerPage);
+  const numbers = [...Array(pgNumber + 1).keys()].slice(1);
 
   const handleChange = (e) => {
     setSearchedItem(e.target.value);
   };
 
   const handleSearch = () => {
-    const searchedValue = searchedItem.replace(/\b\w/g, (char) =>
-      char.toUpperCase()
-    );
+    const searchedValue = searchedItem.replace(/\b\w/g, (char) => char.toUpperCase());
     const item = duplicate.find((book) => book.title === searchedValue);
     if (item) {
       setBooks([item]);
@@ -43,6 +49,10 @@ function Home({ handleClick }) {
     fetchBooks();
   }, []);
 
+  useEffect(() => {
+    setCurrentBooks(books.slice(firstIndex, lastIndex));
+  }, [books, currentPage, firstIndex, lastIndex]);
+
   return (
     <div>
       <Context.Provider
@@ -53,7 +63,13 @@ function Home({ handleClick }) {
           handleClick,
           handleChange,
           handleSearch,
-          books,
+          currentBooks,
+          firstIndex,
+          lastIndex,
+          currentPage,
+          numbers,
+          setCurrentBooks,
+          setCurrentPage
         }}
       >
         <Searchbar />
@@ -62,4 +78,5 @@ function Home({ handleClick }) {
     </div>
   );
 }
-export default Home;
+
+export default Books;
