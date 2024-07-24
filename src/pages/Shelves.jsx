@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { SecondContext } from "../components/App";
-import {  storeBooks } from "../utils/booksMethods";
-
-
+import { storeBooks } from "../utils/booksMethods";
+import { FaTrash } from "react-icons/fa";
 
 function Shelves() {
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ function Shelves() {
                       className="delete-buttons"
                       onClick={() => handleDelete(book.id)}
                     >
-                      Delete
+                      <FaTrash></FaTrash>
                     </button>
                   </li>
                 </ul>

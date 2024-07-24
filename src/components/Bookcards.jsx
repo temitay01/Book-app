@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../pages/Books";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function Bookcards() {
   const navigate = useNavigate();
-  const { currentBooks, currentPage, numbers, setCurrentPage, firstIndex, lastIndex } = useContext(Context);
+  const {
+    currentBooks,
+    currentPage,
+    numbers,
+    setCurrentPage,
+    firstIndex,
+    lastIndex,
+  } = useContext(Context);
 
   const handleBookClick = (id) => {
     navigate(`/books/${id}`);
@@ -32,10 +40,15 @@ function Bookcards() {
         <div className="inner-container">
           {currentBooks.map((book) => (
             <ul key={book.id}>
-              <li onClick={() => handleBookClick(book.id)} className="book-display">
+              <li
+                onClick={() => handleBookClick(book.id)}
+                className="book-display"
+              >
                 <img src={book.cover_image} alt={book.title} />
                 <h2>{book.title}</h2>
-                <p>By <span>{book.author}</span></p>
+                <p>
+                  By <span>{book.author}</span>
+                </p>
               </li>
             </ul>
           ))}
@@ -43,15 +56,24 @@ function Bookcards() {
       </div>
       <ul className="pagination">
         <li className="page-item">
-          <a href="#" className="page-link" onClick={prePage}>prev</a>
+          <a href="#" className="page-link" onClick={prePage}>
+            <FaArrowLeft></FaArrowLeft>
+          </a>
         </li>
         {numbers.map((n, i) => (
-          <li className={`page-item ${currentPage === n ? 'active' : ''}`} key={i}>
-            <a href="#" className="page-link" onClick={() => changeCPage(n)}>{n}</a>
+          <li
+            className={`page-item ${currentPage === n ? "active" : ""}`}
+            key={i}
+          >
+            <a href="#" className="page-link" onClick={() => changeCPage(n)}>
+              {n}
+            </a>
           </li>
         ))}
         <li className="page-item">
-          <a href="#" className="page-link" onClick={nextPage}>next</a>
+          <a href="#" className="page-link" onClick={nextPage}>
+            <FaArrowRight />
+          </a>
         </li>
       </ul>
     </div>

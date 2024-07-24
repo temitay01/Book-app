@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../pages/Books";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FaSearch } from "react-icons/fa";
 function Searchbar() {
-  const { setCurrentBooks, duplicate, handleChange, handleSearch } = useContext(Context);
+  const { setCurrentBooks, duplicate, handleChange, handleSearch } =
+    useContext(Context);
 
   const handleRestore = () => {
     setCurrentBooks(duplicate);
@@ -15,17 +19,42 @@ function Searchbar() {
     setCurrentBooks(filtered);
   };
 
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: true,
+  };
   return (
     <div className="searchbar-container">
       <div className="buttons-div">
-        <button className="buttons" onClick={handleRestore}>All</button>
-        {genres.map((genre) => (
-          <button className="buttons" onClick={() => handleClick(genre)} key={genre}>{genre}</button>
-        ))}
+        <Slider {...settings}>
+          <button className="buttons" onClick={handleRestore}>
+            All
+          </button>
+          {genres.map((genre) => (
+            <button
+              className="buttons"
+              onClick={() => handleClick(genre)}
+              key={genre}
+            >
+              {genre}
+            </button>
+          ))}
+        </Slider>
       </div>
       <div className="search-input">
-        <input placeholder="Search..." type="text" id="search" onChange={handleChange} />
-        <button className="search-button" onClick={handleSearch}>Search</button>
+        <input
+          placeholder="Search..."
+          type="text"
+          id="search"
+          onChange={handleChange}
+        />
+        <button className="search-button" onClick={handleSearch}>
+          <FaSearch></FaSearch>
+        </button>
       </div>
     </div>
   );
