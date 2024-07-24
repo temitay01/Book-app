@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -7,7 +7,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
-  background: blue;
+  padding-left: 10px;
+  padding-right: 10px;
+  
 }
 
 .slick-arrow.slick-next {
@@ -137,7 +139,7 @@ code {
 }
 
 .inner-container li {
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .book-card {
@@ -189,8 +191,8 @@ code {
 }
 
 .buttons-div {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .buttons {
   background-color: #ff7e31;
@@ -202,7 +204,6 @@ code {
   font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial,
     sans-serif;
   height: 40px;
-  line-height: 40px;
   outline: 0;
   padding: 0 20px;
   pointer-events: auto;
@@ -371,10 +372,44 @@ code {
     flex-direction: column;
     height: auto;
     padding: 10px;
+   
+  }
+
+  
+.inner-container li {
+  max-width: 200px;
+}
+  .search-input{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .searchbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #search {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .search-button {
+    width: 20%;
+    margin-top: 9px;
+    border: none;
+    margin-left:3px;
   }
 
   .nav-bar div {
     margin: 10px;
+  }
+
+
+
+  .buttons-div {
+    width: 100%;
   }
 
   .container {
@@ -382,26 +417,26 @@ code {
   }
 
   .inner-container {
-    grid-template-columns: 1fr;
-    padding-bottom: 10px;
-  }
-
-  .buttons-div {
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
   }
 
   .book-display {
-    height: auto;
-    padding-bottom: 0px;
+    height: auto; 
+    padding: 10px;
   }
 
   .book-display img {
     height: auto;
+    max-height: 200px;
+    
   }
-
   .book-detail {
     flex-direction: column;
     align-items: center;
+  }
+  .book-detail-image  {
+    align-items: center;
+    margin-left: 25px;
   }
 
   .book-detail-image img {
@@ -462,6 +497,7 @@ code {
   .book-detail-info button {
     margin-left: 95px;
   }
+  
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
