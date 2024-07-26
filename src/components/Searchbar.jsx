@@ -33,7 +33,7 @@ function Searchbar() {
           slidesToShow: 3,
           infinite: false,
           speed: 500,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           dots: false,
           arrows: false,
         },

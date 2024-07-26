@@ -7,7 +7,6 @@ function Navbar() {
   return (
     <nav className="nav-bar">
       <div className="logo">BOOK-LIST</div>
-      <div className="seperator">|</div>
       <NavLink to={"./"}>
         <div>Home</div>
       </NavLink>

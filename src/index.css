@@ -95,7 +95,8 @@ code {
   display: flex;
   padding: 10px;
   align-items: center;
-  font-family: cursive;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 .nav-bar NavLink {
   background-color: aquamarine;
@@ -258,7 +259,8 @@ code {
   height: 50px;
   background-color: brown;
   align-items: center;
-  font-family: cursive;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   align-content: center;
   justify-content: center;
   display: flex;
@@ -622,6 +624,7 @@ code {
   .container {
     flex-direction: column;
     padding: 5px;
+    margin-top: 15px;
   }
 
   .inner-container {
@@ -652,6 +655,7 @@ code {
   .book-display p {
     font-size: 0.8em;
     padding: 0 5px;
+    margin-top: 20px;
   }
 
   .buttons {
@@ -709,5 +713,12 @@ code {
   .buttons-div {
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .delete-buttons {
+    margin-top: 15px;
+    padding: 5px;
+  }
+  .footer {
+    margin-top: 10px;
   }
 }
