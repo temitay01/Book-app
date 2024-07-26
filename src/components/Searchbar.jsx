@@ -26,17 +26,19 @@ function Searchbar() {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
-    responsive:[
+    responsive: [
       {
-        breakpoint:600,
-        settings:{   
-        slidesToShow:3,
-        infinite:false,
-        speed:500,
-        slidesToScroll:1,
-        dots:false
-      }}
-    ]
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          infinite: false,
+          speed: 500,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: false,
+        },
+      },
+    ],
   };
   return (
     <div className="searchbar-container">
